@@ -25,15 +25,15 @@ class App extends Component {
     this.setState({currentUser: newUser})
   }
 
-  addCredit = (amount) => {
+  addCredit = (cred) => {
     const newCredits = {...this.state.credits}
-    newCredits.push(amount)
+    newCredits.push(cred)
     this.setState({credits: newCredits})
   }
 
-  addDebit = (amount) => {
+  addDebit = (deb) => {
     const newDebits = {...this.state.debits}
-    newDebits.push(amount)
+    newDebits.push(deb)
     this.setState({debits: newDebits})
   }
 
