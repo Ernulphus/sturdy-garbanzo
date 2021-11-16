@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Home from './components/Home';
 import UserProfile from './components/UserProfile';
+import './App.css';
 
 class App extends Component {
   constructor() {
@@ -32,7 +33,7 @@ class App extends Component {
 
     return (
       <Router>
-        <div>
+        <div class="App">
           <Route exact path="/" render={HomeComponent}/>
           <Route exact path = "/userProfile" render={UserProfileComponent}/>
           <Route exact path="/login" render={LogInComponent}/>
