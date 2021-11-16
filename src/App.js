@@ -25,11 +25,19 @@ class App extends Component {
     this.setState({currentUser: newUser})
   }
 
-  addCredit = () => {
-
+  addCredit = (amount) => {
+    const newCredits = {...this.state.credits}
+    newCredits.push(amount)
+    this.setState({credits: newCredits})
   }
 
-  addDebit = () => {
+  addDebit = (amount) => {
+    const newDebits = {...this.state.debits}
+    newDebits.push(amount)
+    this.setState({debits: newDebits})
+  }
+
+  componentDidMount = () => {
 
   }
 
