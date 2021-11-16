@@ -25,6 +25,14 @@ class App extends Component {
     this.setState({currentUser: newUser})
   }
 
+  addCredit = () => {
+
+  }
+
+  addDebit = () => {
+
+  }
+
   render() {
 
     const HomeComponent = () => (<Home accountBalance={this.state.accountBalance}/>);
