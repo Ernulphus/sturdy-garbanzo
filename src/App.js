@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Home from './components/Home';
+import LogIn from './components/LogIn';
 import UserProfile from './components/UserProfile';
 import './App.css';
 
@@ -47,7 +48,7 @@ class App extends Component {
     const UserProfileComponent = () => (
       <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince} />
     );
-    const LogInComponent = () => (<logIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />)
+    const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />)
 
     return (
       <Router>
