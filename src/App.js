@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Home from './components/Home';
 import LogIn from './components/LogIn';
 import UserProfile from './components/UserProfile';
 import './App.css';
+import axios from 'axios';
 
 class App extends Component {
   constructor() {
@@ -26,7 +27,10 @@ class App extends Component {
     this.setState({currentUser: newUser})
   }
 
+  //
   addCredit = (cred) => {
+
+    // Push new
     const newCredits = {...this.state.credits}
     newCredits.push(cred)
     this.setState({credits: newCredits})
@@ -35,10 +39,42 @@ class App extends Component {
   addDebit = (deb) => {
     const newDebits = {...this.state.debits}
     newDebits.push(deb)
+    console.log("Updated debits: ", newDebits);
     this.setState({debits: newDebits})
   }
 
-  componentDidMount = () => {
+  // Request credits and debits from the API and put them in the starting debits and credits arrays
+  componentDidMount = async () => {
+    let linkToDebits = "https://moj-api.herokuapp.com/debits";
+    let linkToCredits = "https://moj-api.herokuapp.com/credits";
+
+    // Call debits, and add each one to the debits list
+    try
+    {
+      let debs = await axios.get(linkToDebits);
+      this.setState({debits: debs.data});
+    }
+    catch (error){
+      if (error.response)
+      {
+          console.log(error.response.data);
+          console.log(error.response.status);
+      }
+    }
+
+    // Call credits, and add each one to the credits list
+    try
+    {
+      let creds = await axios.get(linkToCredits);
+      this.setState({credits:creds.data});
+    }
+    catch (error){
+      if (error.response)
+      {
+        console.log(error.response.data);
+        console.log(error.response.status);
+      }
+    }
 
   }
 
