@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Home from './components/Home';
 import LogIn from './components/LogIn';
+// import Credits from './components/Credits';
+// import Debits from './components/Debits';
 import UserProfile from './components/UserProfile';
 import './App.css';
 import axios from 'axios';
@@ -85,6 +87,8 @@ class App extends Component {
       <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince} />
     );
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />)
+    // const CreditsComponent;
+    // const DebitsComponent;
 
     return (
       <Router>
@@ -92,6 +96,7 @@ class App extends Component {
           <Route exact path="/" render={HomeComponent}/>
           <Route exact path = "/userProfile" render={UserProfileComponent}/>
           <Route exact path="/login" render={LogInComponent}/>
+
         </div>
       </Router>
     );
