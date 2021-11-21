@@ -2,18 +2,20 @@ import React, {Component} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Home from './components/Home';
 import LogIn from './components/LogIn';
-// import Credits from './components/Credits';
-// import Debits from './components/Debits';
 import UserProfile from './components/UserProfile';
+
+// import Credits from './components/Credits';
+import Debits from './components/Debits';
+
 import './App.css';
 import axios from 'axios';
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      accountBalance: 14568.27,
+      accountBalance: 0,
       currentUser: {
         userName: 'joe_shmo',
         memberSince: '07/23/96'
@@ -39,10 +41,10 @@ class App extends Component {
   }
 
   addDebit = (deb) => {
-    const newDebits = {...this.state.debits}
-    newDebits.push(deb)
-    console.log("Updated debits: ", newDebits);
-    this.setState({debits: newDebits})
+    deb.preventDefault();
+    const description = deb.target[0].value;
+    const amount = Number(deb.target[1].value);
+    console.log(description, amount);
   }
 
   // Request credits and debits from the API and put them in the starting debits and credits arrays
@@ -88,15 +90,15 @@ class App extends Component {
     );
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />)
     // const CreditsComponent;
-    // const DebitsComponent;
+    const DebitsComponent = () => (<Debits addDebit={this.addDebit} debits={this.state.debits} />)
 
     return (
       <Router>
-        <div class="App">
+        <div className="App">
           <Route exact path="/" render={HomeComponent}/>
           <Route exact path = "/userProfile" render={UserProfileComponent}/>
           <Route exact path="/login" render={LogInComponent}/>
-
+          <Route exact path="/debits" render={DebitsComponent}/>
         </div>
       </Router>
     );
