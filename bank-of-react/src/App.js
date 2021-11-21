@@ -4,7 +4,7 @@ import Home from './components/Home';
 import LogIn from './components/LogIn';
 import UserProfile from './components/UserProfile';
 
-// import Credits from './components/Credits';
+import Credits from './components/Credits';
 import Debits from './components/Debits';
 
 import './App.css';
@@ -33,11 +33,10 @@ class App extends Component {
 
   //
   addCredit = (cred) => {
-
-    // Push new
-    const newCredits = {...this.state.credits}
-    newCredits.push(cred)
-    this.setState({credits: newCredits})
+    cred.preventDefault();
+    const description = cred.target[0].value;
+    const amount = Number(cred.target[1].value);
+    console.log(description, amount);
   }
 
   addDebit = (deb) => {
@@ -89,7 +88,7 @@ class App extends Component {
       <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince} />
     );
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />)
-    // const CreditsComponent;
+    const CreditsComponent = () => (<Credits addCredit={this.addCredit} credits={this.state.credits} />)
     const DebitsComponent = () => (<Debits addDebit={this.addDebit} debits={this.state.debits} />)
 
     return (
@@ -99,6 +98,7 @@ class App extends Component {
           <Route exact path = "/userProfile" render={UserProfileComponent}/>
           <Route exact path="/login" render={LogInComponent}/>
           <Route exact path="/debits" render={DebitsComponent}/>
+          <Route exact path="/credits" render={CreditsComponent}/>
         </div>
       </Router>
     );
