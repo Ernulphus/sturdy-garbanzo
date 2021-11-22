@@ -55,9 +55,22 @@ class App extends Component {
 
   addDebit = (deb) => {
     deb.preventDefault();
+
     const description = deb.target[0].value;
     const amount = Number(deb.target[1].value);
-    console.log(description, amount);
+    let id = nextId();
+    let newDate = new Date();
+    newDate = newDate.toISOString().split('T')[0];
+    const newDeb = {
+      id: id,
+      amount: amount,
+      date: newDate,
+      description: description
+    };
+
+    this.setState((state, props) => {
+      return {debits: [...state.debits, newDeb]}
+    });
   }
 
   // Request credits and debits from the API and put them in the starting debits and credits arrays
