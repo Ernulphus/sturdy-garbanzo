@@ -20,7 +20,6 @@ const Credits = (props) => {
         <input type="text" name="amount" />
         <button type="submit">Add Credit</button>
       </form>
-      <Link to="/">Home</Link>
     </div>
   )
 }
