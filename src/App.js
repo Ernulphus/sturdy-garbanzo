@@ -40,7 +40,9 @@ class App extends Component {
 
     // Gather information about the new credit
     const description = cred.target[0].value;
-    const amount = Number(cred.target[1].value);
+    const amount = parseFloat(cred.target[1].value);
+    if (isNaN(amount)) {console.log("bad input"); return;} // Return if ill-formatted value
+
     let id = nextId();      // Using react-id-generator which I found online
     let newDate = new Date();
     newDate = newDate.toISOString().split('T')[0]; // Source: https://stackoverflow.com/questions/23593052/format-javascript-date-as-yyyy-mm-dd
@@ -67,7 +69,9 @@ class App extends Component {
     deb.preventDefault();
 
     const description = deb.target[0].value;
-    const amount = Number(deb.target[1].value);
+    const amount = parseFloat(deb.target[1].value);
+    if (isNaN(amount)) {console.log("bad input"); return;} // Return if ill-formatted value
+
     let id = nextId();
     let newDate = new Date();
     newDate = newDate.toISOString().split('T')[0];
