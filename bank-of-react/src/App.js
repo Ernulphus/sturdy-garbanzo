@@ -72,7 +72,10 @@ class App extends Component {
     };
 
     this.setState((state, props) => {
-      return {debits: [...state.debits, newDeb]}
+      return {
+        debits: [...state.debits, newDeb],
+        accountBalance : Math.round((this.state.accountBalance - amount + Number.EPSILON) * 100) / 100,
+      }
     });
   }
 
