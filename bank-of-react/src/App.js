@@ -49,7 +49,10 @@ class App extends Component {
     };
 
     this.setState((state, props) => {
-      return {credits: [...state.credits, newCred]}
+      return {
+        credits: [...state.credits, newCred],
+        accountBalance : Math.round((this.state.accountBalance + amount + Number.EPSILON) * 100) / 100,
+      }
     });
   }
 
