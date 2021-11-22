@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom';
 
 const Credits = (props) => {
 
@@ -19,6 +20,7 @@ const Credits = (props) => {
         <input type="number" name="amount" />
         <button type="submit">Add Credit</button>
       </form>
+      <Link to="/">Home</Link>
     </div>
   )
 }
