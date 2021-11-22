@@ -78,6 +78,8 @@ class App extends Component {
     let linkToDebits = "https://moj-api.herokuapp.com/debits";
     let linkToCredits = "https://moj-api.herokuapp.com/credits";
 
+    // Source for rounding to two decimal places: https://stackoverflow.com/questions/11832914/how-to-round-to-at-most-2-decimal-places-if-necessary
+
     // Call debits, and add each one to the debits list
     try
     {
@@ -87,7 +89,7 @@ class App extends Component {
         debt += deb.amount;
       });
       this.setState({
-        accountBalance: this.state.accountBalance - debt,
+        accountBalance: Math.round((this.state.accountBalance - debt + Number.EPSILON) * 100) / 100,
         debits: debs.data
       });
     }
@@ -103,7 +105,14 @@ class App extends Component {
     try
     {
       let creds = await axios.get(linkToCredits);
-      this.setState({credits:creds.data});
+      let credt = 0;
+      creds.data.forEach(cred => {
+        credt += cred.amount;
+      });
+      this.setState({
+        accountBalance: Math.round((this.state.accountBalance + credt + Number.EPSILON) * 100) / 100,
+        credits: creds.data
+      });
     }
     catch (error){
       if (error.response)
