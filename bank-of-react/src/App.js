@@ -7,6 +7,7 @@ import UserProfile from './components/UserProfile';
 import Credits from './components/Credits';
 import Debits from './components/Debits';
 import Header from './components/Header';
+import AccountBalance from './components/AccountBalance';
 
 import './App.css';
 import axios from 'axios';
@@ -171,6 +172,7 @@ class App extends Component {
       <div>
       <Header />
       <Credits addCredit={this.addCredit} credits={this.state.credits} />
+      <AccountBalance accountBalance={this.state.accountBalance}/>
       </div>
     );
 
@@ -178,11 +180,13 @@ class App extends Component {
       <div>
       <Header />
       <Debits addDebit={this.addDebit} debits={this.state.debits} />
+      <AccountBalance accountBalance={this.state.accountBalance}/>
       </div>
     );
 
     return (
-      <Router>
+      // Credit to my roommate Sam Ebersole for help with the basename!
+      <Router basename="/sturdy-garbanzo">
         <div className="App">
           <Route exact path="/" render={HomeComponent}/>
           <Route exact path="/userProfile" render={UserProfileComponent}/>
