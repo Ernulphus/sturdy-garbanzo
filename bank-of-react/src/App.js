@@ -9,6 +9,7 @@ import Debits from './components/Debits';
 
 import './App.css';
 import axios from 'axios';
+import nextId from "react-id-generator";
 
 class App extends Component {
   constructor(props) {
@@ -34,9 +35,22 @@ class App extends Component {
   //
   addCredit = (cred) => {
     cred.preventDefault();
+
     const description = cred.target[0].value;
     const amount = Number(cred.target[1].value);
-    console.log(description, amount);
+    let id = nextId();
+    let newDate = new Date();
+    newDate = newDate.toISOString().split('T')[0];
+    const newCred = {
+      id: id,
+      amount: amount,
+      date: newDate,
+      description: description
+    };
+
+    this.setState((state, props) => {
+      return {credits: [...state.credits, newCred]}
+    });
   }
 
   addDebit = (deb) => {
