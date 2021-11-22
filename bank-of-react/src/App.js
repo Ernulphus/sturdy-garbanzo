@@ -82,7 +82,14 @@ class App extends Component {
     try
     {
       let debs = await axios.get(linkToDebits);
-      this.setState({debits: debs.data});
+      let debt = 0;
+      debs.data.forEach(deb => {
+        debt += deb.amount;
+      });
+      this.setState({
+        accountBalance: this.state.accountBalance - debt,
+        debits: debs.data
+      });
     }
     catch (error){
       if (error.response)
