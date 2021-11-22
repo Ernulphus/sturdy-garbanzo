@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background-color: #2a2e36;
+  color: white;
+  height: 100vh;
 }
 
 .App-logo {
@@ -9,7 +12,8 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite 2s;
+    animation-timing-function: ease-in-out;
   }
 }
 
