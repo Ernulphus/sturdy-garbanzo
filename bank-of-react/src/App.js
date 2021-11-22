@@ -11,6 +11,8 @@ import './App.css';
 import axios from 'axios';
 import nextId from "react-id-generator";
 
+// Source for rounding to two decimal places: https://stackoverflow.com/questions/11832914/how-to-round-to-at-most-2-decimal-places-if-necessary
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -32,15 +34,18 @@ class App extends Component {
     this.setState({currentUser: newUser})
   }
 
-  //
+  // Run after submitting a new credit form
   addCredit = (cred) => {
     cred.preventDefault();
 
+    // Gather information about the new credit
     const description = cred.target[0].value;
     const amount = Number(cred.target[1].value);
-    let id = nextId();
+    let id = nextId();      // Using react-id-generator which I found online
     let newDate = new Date();
-    newDate = newDate.toISOString().split('T')[0];
+    newDate = newDate.toISOString().split('T')[0]; // Source: https://stackoverflow.com/questions/23593052/format-javascript-date-as-yyyy-mm-dd
+
+    // Create new credit object to add to the list
     const newCred = {
       id: id,
       amount: amount,
@@ -48,6 +53,7 @@ class App extends Component {
       description: description
     };
 
+    // Add new credit and update account balance
     this.setState((state, props) => {
       return {
         credits: [...state.credits, newCred],
@@ -56,6 +62,7 @@ class App extends Component {
     });
   }
 
+  // Run after submitting a new debit form, similar to addCredit
   addDebit = (deb) => {
     deb.preventDefault();
 
@@ -81,19 +88,22 @@ class App extends Component {
 
   // Request credits and debits from the API and put them in the starting debits and credits arrays
   componentDidMount = async () => {
+    // API links
     let linkToDebits = "https://moj-api.herokuapp.com/debits";
     let linkToCredits = "https://moj-api.herokuapp.com/credits";
-
-    // Source for rounding to two decimal places: https://stackoverflow.com/questions/11832914/how-to-round-to-at-most-2-decimal-places-if-necessary
 
     // Call debits, and add each one to the debits list
     try
     {
       let debs = await axios.get(linkToDebits);
+
+      // Add up debits to get total debt, to be subtracted from balance
       let debt = 0;
       debs.data.forEach(deb => {
         debt += deb.amount;
       });
+
+      // Update balance and list of debits
       this.setState({
         accountBalance: Math.round((this.state.accountBalance - debt + Number.EPSILON) * 100) / 100,
         debits: debs.data
@@ -111,10 +121,14 @@ class App extends Component {
     try
     {
       let creds = await axios.get(linkToCredits);
+
+      // Add up credits to get total credt (not a word) to add to balance
       let credt = 0;
       creds.data.forEach(cred => {
         credt += cred.amount;
       });
+
+      // Update balance and list of credits
       this.setState({
         accountBalance: Math.round((this.state.accountBalance + credt + Number.EPSILON) * 100) / 100,
         credits: creds.data
