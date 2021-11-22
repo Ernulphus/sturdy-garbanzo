@@ -14,12 +14,12 @@
   .App-logo {
     animation: App-logo-spin infinite 2s;
     animation-timing-function: ease-in-out;
+    background-color: #61dafb;
   }
 }
 
 .App-header {
   background-color: #3a3e46;
-  /*min-height: 100vh; */
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -45,3 +45,25 @@
     transform: rotate(360deg);
   }
 }
+
+.balance {
+  background-color: white;
+  border-radius: 50px;
+  color: #2a2e36;
+  margin-bottom: 0px;
+  border: dashed;
+  border-color: #61dafb;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/**/

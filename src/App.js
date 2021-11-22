@@ -185,7 +185,8 @@ class App extends Component {
     );
 
     return (
-      <Router basename="/sturdy-garbanzo"> // Credit to my roommate Sam Ebersole for help with the basename!
+      // Credit to my roommate Sam Ebersole for help with the basename!
+      <Router basename="/sturdy-garbanzo">
         <div className="App">
           <Route exact path="/" render={HomeComponent}/>
           <Route exact path="/userProfile" render={UserProfileComponent}/>
