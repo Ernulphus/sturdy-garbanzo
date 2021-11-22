@@ -6,6 +6,7 @@ import UserProfile from './components/UserProfile';
 
 import Credits from './components/Credits';
 import Debits from './components/Debits';
+import Header from './components/Header';
 
 import './App.css';
 import axios from 'axios';
@@ -151,18 +152,40 @@ class App extends Component {
   render() {
 
     const HomeComponent = () => (<Home accountBalance={this.state.accountBalance}/>);
+
     const UserProfileComponent = () => (
+      <div>
+      <Header />
       <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince} />
+      </div>
     );
-    const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />)
-    const CreditsComponent = () => (<Credits addCredit={this.addCredit} credits={this.state.credits} />)
-    const DebitsComponent = () => (<Debits addDebit={this.addDebit} debits={this.state.debits} />)
+
+    const LogInComponent = () => (
+      <div>
+      <Header/>
+      <LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />
+      </div>
+    );
+
+    const CreditsComponent = () => (
+      <div>
+      <Header />
+      <Credits addCredit={this.addCredit} credits={this.state.credits} />
+      </div>
+    );
+
+    const DebitsComponent = () => (
+      <div>
+      <Header />
+      <Debits addDebit={this.addDebit} debits={this.state.debits} />
+      </div>
+    );
 
     return (
       <Router>
         <div className="App">
           <Route exact path="/" render={HomeComponent}/>
-          <Route exact path = "/userProfile" render={UserProfileComponent}/>
+          <Route exact path="/userProfile" render={UserProfileComponent}/>
           <Route exact path="/login" render={LogInComponent}/>
           <Route exact path="/debits" render={DebitsComponent}/>
           <Route exact path="/credits" render={CreditsComponent}/>
