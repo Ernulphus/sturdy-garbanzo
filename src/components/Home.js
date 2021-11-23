@@ -11,6 +11,8 @@ class Home extends Component {
 
         <h2>
         <div class="button">
+        <Link to="/logIn">Change User</Link>
+        <br/>
         <Link to="/userProfile">User Profile</Link>
         </div>
         <div class="button">
