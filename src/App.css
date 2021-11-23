@@ -50,7 +50,10 @@
   background-color: white;
   border-radius: 50px;
   color: #2a2e36;
-  margin-bottom: 0px;
+  position: fixed;
+  left: 30vw;
+  bottom: 0;
+  width: 40vw;
   border: dashed;
   border-color: #61dafb;
 }
