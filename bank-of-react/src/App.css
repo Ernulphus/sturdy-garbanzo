@@ -68,13 +68,21 @@
   margin-top: 4vh;
 }
 
-a {
-
-}
-
 .field {
   margin-top: 2vh
 }
+
+/* Make links look nice */
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: black;
+  background-color: #61dafb;
+}
+
 
 
 
