@@ -16,9 +16,9 @@ const Credits = (props) => {
       <ul>
         {creditsView()}
       </ul>
-      <form onSubmit={props.addCredit}>
-        <input type="text" name="description" />
-        <input type="text" name="amount" />
+      <form onSubmit={props.addCredit} class="field">
+        <input type="text" name="description" placeholder="enter description"/>
+        <input type="text" name="amount" placeholder="enter value"/>
         <button type="submit">Add Credit</button>
       </form>
     </div>
