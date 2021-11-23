@@ -50,7 +50,7 @@
   background-color: white;
   border-radius: 50px;
   color: #2a2e36;
-  position: fixed;
+  position: fixed; /*Keeps the balance at bottom of the page*/
   left: 30vw;
   bottom: 0;
   width: 40vw;
@@ -58,6 +58,15 @@
   border-color: #61dafb;
 }
 
+.Home a {
+  border-radius: 50px;
+  background: white;
+  padding: 10px;
+}
+
+.Home .button {
+  margin-top: 8vh;
+}
 
 
 
