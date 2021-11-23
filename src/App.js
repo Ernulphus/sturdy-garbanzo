@@ -185,7 +185,7 @@ class App extends Component {
     );
 
     return (
-      <Router>
+      <Router basename="/sturdy-garbanzo">
         <div className="App">
           <Route exact path="/" render={HomeComponent}/>
           <Route exact path="/userProfile" render={UserProfileComponent}/>
