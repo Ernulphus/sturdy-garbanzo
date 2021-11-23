@@ -11,12 +11,14 @@ const Debits = (props) => {
   }
 
   return (
-    <div>
+    <div class="credits-debits">
       <h1>Debits</h1>
-      {debitsView()}
-      <form onSubmit={props.addDebit}>
-        <input type="text" name="description" />
-        <input type="text" name="amount" />
+      <ul>
+        {debitsView()}
+      </ul>
+      <form onSubmit={props.addDebit} class="field">
+        <input type="text" name="description" placeholder="enter description"/>
+        <input type="text" name="amount" placeholder="enter value"/>
         <button type="submit">Add Debit</button>
       </form>
     </div>
