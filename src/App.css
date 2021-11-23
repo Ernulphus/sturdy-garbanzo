@@ -19,6 +19,16 @@
   }
 }
 
+/* Logo spins once when page visited */
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .App-header {
   background-color: #3a3e46;
   display: flex;
@@ -38,15 +48,7 @@
   width: 5%
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
+/* Make balance display more fun */
 .balance {
   background-color: white;
   border-radius: 50px;
@@ -81,6 +83,7 @@ h1 {
   margin-right: 2vh;
 }
 
+/* Styling login submission */
 .field {
   margin-top: 2vh
 }
@@ -96,7 +99,20 @@ a:hover {
   background-color: #61dafb;
 }
 
+.credits-debits {
+  width: 50vw;
+  left: 25vw;
+  position: relative;
+}
 
+.credits-debits ul {
+  display: inline-block;
+  text-align: left;
+}
+
+.credits-debits li {
+  margin: 1vh;
+}
 
 
 
