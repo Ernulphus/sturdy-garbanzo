@@ -6,15 +6,16 @@
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  height: 30vh;
+  margin-top: 2vh;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 2s;
-    animation-timing-function: ease-in-out;
+    animation: App-logo-spin 2s;
+    animation-timing-function: ease;
     background-color: #61dafb;
+    padding: 2vh;
   }
 }
 
@@ -58,14 +59,26 @@
   border-color: #61dafb;
 }
 
-.Home a {
+h1 {
+  margin-bottom: 4vh;
+}
+
+.Home-links {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.Home-links a {
   border-radius: 50px;
   background: white;
   padding: 10px;
 }
 
-.Home .button {
-  margin-top: 4vh;
+.Home-links div {
+  margin-left: 2vh;
+  margin-right: 2vh;
 }
 
 .field {
