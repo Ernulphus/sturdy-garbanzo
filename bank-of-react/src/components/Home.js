@@ -9,17 +9,17 @@ class Home extends Component {
         <img class="App-logo" src="https://cdn.iconscout.com/icon/free/png-256/bank-1417507-1201209.png" alt="bank"/>
         <h1>Bank of React</h1>
 
-        <h2>
-        <div class="button">
+        <h2 class="Home-links">
+        <div>
         <Link to="/logIn">Change User</Link>
         </div>
-        <div class="button">
+        <div>
         <Link to="/userProfile">User Profile</Link>
         </div>
-        <div class="button">
+        <div>
         <Link to="/debits">Debits</Link>
         </div>
-        <div class="button">
+        <div>
         <Link to="/credits">Credits</Link>
         </div>
         </h2>
