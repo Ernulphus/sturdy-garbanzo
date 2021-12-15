@@ -7,4 +7,4 @@ I tried for like two hours straight to publish on github pages, but I think I ju
 
 Remember to run `npm start` from inside the bank-of-react folder!
 
-Late-night edit: after a few more hours and a few sobs I got it done! https://ernulphus.github.io/bor/debits
+Late-night edit: after a few more hours and a few sobs I got it done! https://ernulphus.github.io/bor
